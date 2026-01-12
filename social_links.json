@@ -1,0 +1,20 @@
+{
+    "links": [
+      {
+        "name": "TikTok",
+        "url": "https://www.tiktok.com/",
+        "icon": "images/tiktok.png"
+      },
+      {
+        "name": "Pinterest",
+        "url": "https://www.pinterest.com/",
+        "icon": "images/pinterest.png"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/",
+        "icon": "images/instagram.png"
+      }
+    ]
+  }
+  

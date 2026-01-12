@@ -1,0 +1,1347 @@
+body { 
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top bar */
+.top-bar {
+  background-color: #FFB16C;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+
+.top-bar img {
+  width: 20px;
+  height: auto;
+}
+
+.login-btn {
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.top-profile {
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  font-size: 13px; /* 👈 Sulygina su Prisijungti */
+  font-family: Arial, sans-serif; /* 👈 Kad būtų toks pats šriftas */
+}
+
+.top-profile:hover {
+  background-color: #cfcfcf;
+}
+
+
+/* Header */
+header {
+  background-color: #EFEFEF;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 80px;
+
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.nav-center a,
+.dropbtn {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 100;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.search-container {
+  position: relative;
+  width: 150px;
+}
+
+.search-input {
+  padding: 6px 50px 6px -10px;
+  font-size: 14px;
+}
+
+.search-container img {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+
+/* Footer */
+footer {
+  background-color: #D9D9D9;
+  color: #000000;
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links,
+.social {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a,
+.social span {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.social img {
+  width: 24px;
+}
+
+/* Kortelių sekcijos */
+.cards-section {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.cards-section h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap:  40px 40px;
+  align-items: stretch;
+}
+
+/* Receptų kortelės */
+.recipe-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  width: calc(25% - 30px);
+  min-width: 220px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  text-align: center;
+
+  /* Nauja – sulyginimui */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 315px; /* užtikrina bendrą vizualinį aukštį */
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-card button {
+  background-color: #FFA654;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Kategorijų kortelės */
+.category-card {
+  position: relative;
+  border-radius: 12px;
+  width: calc(25% - 30px);
+  min-width: 160px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.03); /* švelnus padidinimas */
+}
+
+/* Nuotrauka per visą foną */
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Pusiau permatomas juodas overlay virš nuotraukos */
+.category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+/* Sustiprinam šešėlį užvedus */
+.category-card:hover::before {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Mygtukas virš nuotraukos */
+.category-card button {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: #FFA654;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.category-card button:hover {
+  background-color: #ff9333;
+}
+
+.recipes-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  background: #e3e3e3;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 220px;
+  max-width: 250px;
+  text-align: left;
+}
+
+.filters h4 {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* SUTVARKYTI FILTRŲ LAYOUT'Ą */
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.filters input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* FILTRŲ IŠVALYMO MYGTUKAS */
+.clear-filters {
+  margin-top: 10px;
+  background-color: #ccc;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.clear-filters:hover {
+  background-color: #bbb;
+}
+
+/* RECEPTŲ BLOKAS */
+.all-recipes {
+  flex: 1;
+}
+
+/* ĮKĖLIMO MYGTUKAS */
+.load-more-btn {
+  margin-top: 20px;
+  background-color: #FFA654;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.load-more-btn:hover {
+  background-color: #ff9333;
+}
+
+.meal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.meal-category h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.meal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.meal-category h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.meal-category .load-more-btn {
+  display: block;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.meal-category {
+  margin-bottom: 60px;
+}
+
+.meal-category .card-grid {
+  gap: 35px;
+  justify-content: center;
+}
+
+/* ikelti recepta */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #e3e3e3;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: left;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+textarea, input, select {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.half-fields {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.half-fields .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.dropdown-group {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dropdown-pair {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-pair label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.dropdown-pair select,
+.dropdown-pair input[type="text"] {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.upload-box {
+  border: 2px dashed #aaa;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.upload-box img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.upload-label p {
+  margin: 0;
+}
+
+#photo-preview {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#photo-preview img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.add-ingredient {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ingredient-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.ingredient-row input:first-child {
+  flex: 2;
+}
+.ingredient-row input:nth-child(2),
+.ingredient-row input:nth-child(3) {
+  flex: 1;
+}
+
+.ingredient-row button {
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #FFA654;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Apie mus psl */
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #e1e1e1;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.about-box h3 {
+  margin-top: 25px;
+  font-size: 20px;
+}
+
+.about-box p,
+.about-box ul {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about-box ul {
+  padding-left: 20px;
+}
+
+.about-box li {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #000000;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+/* Naujienlaiškio prenumerata */
+.newsletter-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 0; /* sumažinam padding apačioje */
+  text-align: center;
+  background: none; /* nes nereikia balto fono */
+}
+
+.newsletter-image-wrapper {
+  position: relative;
+  background-image: url('images/naujienlaiskis.avif');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+
+
+.newsletter-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.newsletter-container p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 30px;
+}
+.newsletter-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(229, 167, 52, 0.4); /* tamsus overlay */
+  z-index: 1;
+}
+
+.newsletter-form-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.newsletter-form-overlay input[type="email"] {
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+  font-size: 14px;
+}
+
+.newsletter-form-overlay button {
+  background-color: #FFA654;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newsletter-form-overlay button:hover {
+  background-color: #ff9333;
+}
+.privacy-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.privacy-header h2 {
+  font-size: 24px; /* buvo 28px */
+  font-weight: bold;
+  margin-bottom: 6px; /* buvo 10px */
+}
+
+.privacy-header p {
+  font-size: 16px;     /* papildyta */
+  margin-top: 0;
+  margin-bottom: 30px; /* kad atitrauktų nuo bloko */
+  font-style: italic;
+  color: #333;
+}
+
+.privacy-content {
+  background-color: #e1e1e1;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 60px;
+}
+
+.privacy-content h3 {
+  margin-top: 25px;
+  font-weight: bold;
+  color: #222;
+}
+
+.privacy-content ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+#privatumo-politika {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+/* Kontaktų puslapio viršus (pavadinimas ir aprašymas) */
+.contact-header {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.contact-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.contact-header p {
+  font-size: 16px;
+  font-style: italic;
+  color: #333;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+/* Kontaktų blokas (visa kontaktų sritis) */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: #e1e1e1;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  box-sizing: border-box;
+}
+
+/* Kontaktų informacija (telefono ir el. pašto blokai) */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-width: 250px;
+  justify-content: center;
+}
+
+.contact-block {
+  background-color: #f3f3f3;
+  padding: 20px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-style: italic;
+  font-size: 18px;
+  color: #000;
+  min-height: 70px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.contact-block img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Kontaktų forma */
+.contact-form {
+  flex: 2;
+  min-width: 300px;
+}
+
+.contact-form h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-form button {
+  background-color: #ffa654;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 5px;
+}
+
+.contact-form button:hover {
+  background-color: #ff9333;
+}
+
+.success-message {
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+/* Bendras paddingas, kad turinys neliestų footerio */
+#kontaktai {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+.d-none {
+  display: none !important;
+}
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 999;
+}
+
+.auth-form-container {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+}
+
+.auth-form {
+  display: none !important;
+}
+.auth-form.active {
+  display: block !important;
+}
+
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: orange;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-form button:hover {
+  background-color: #e88b00;
+}
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 15px;
+  flex-wrap: nowrap;
+}
+
+.auth-options.full-width {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.auth-options a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.auth-options input[type="checkbox"] {
+  position: relative;
+  top: 6px; /* mažas nuleidimas – reguliuok pagal poreikį */
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+
+  /* Svarbu: leidžia click'ą ant span */
+  pointer-events: auto;
+}
+
+/* PROFILIO SEKCJA */
+#profilis {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+/* PROFILIO KONTEINERIS */
+.profile-container {
+  background-color: #e3e3e3;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* PROFILIO ANTRAŠTĖ */
+#profilis h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* INFORMACIJA (vardas, el. paštas...) */
+.profile-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* ĮKELTI RECEPTAI ANTRAŠTĖ */
+.profile-recipes-title {
+  font-size: 20px;
+  font-style: italic;
+  margin: 40px 0 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* RECEPTŲ TINKLELIS */
+.profile-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+}
+
+
+/* ATSIJUNGIMO MYGTUKAS */
+#logout {
+  margin-top: 50px;
+  background-color: #FFA654;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#logout:hover {
+  background-color: #ff9333;
+}
+.recipe-detail {
+  padding: 40px 20px;
+  background-color: #f4f4f4;
+}
+
+.recipe-detail h2.center {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.recipe-info-box {
+  background-color: #e1e1e1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.recipe-image img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-weight: bold;
+}
+
+.recipe-block {
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.recipe-block h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.recipe-block ul,
+.recipe-block ol {
+  margin-left: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.recipe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.orange-btn {
+  background-color: #FFA654;
+  border: none;
+  padding: 10px 18px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orange-btn:hover {
+  background-color: #ff9333;
+}
+
+.orange-btn svg, .orange-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.recipe-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  max-height: 420px;
+  width: 80%; /* pvz., 80% nuo tėvinio elemento pločio */
+  max-width: 700px; /* arba 400px, jei nori konkretaus dydžio */
+  margin: 0 auto; /* kad būtų centre */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel-track img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+.recipe-stats {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #444;
+}
+/* RESPONSIVE DESIGN – išdėstymo prisitaikymas */
+
+/* Planšetėms ir mažesniems */
+@media (max-width: 1024px) {
+  .recipe-card,
+  .category-card {
+    width: calc(50% - 30px);
+  }
+}
+
+/* Telefonams – 600px ir mažiau */
+@media (max-width: 600px) {
+  .recipe-card,
+  .category-card {
+    width: 100%;
+  }
+}
+
+/* Bendras pritaikymas iki 768px */
+@media (max-width: 768px) {
+  /* Recepto informacijos blokas */
+  .recipe-info-box {
+    padding: 20px;
+  }
+
+  .recipe-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .recipe-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .carousel-btn.prev {
+    left: -10px;
+  }
+
+  .carousel-btn.next {
+    right: -10px;
+  }
+
+  .carousel-btn img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Kortelių tinklelis */
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recipe-card img {
+    max-height: 180px;
+  }
+
+  .recipe-detail h2.center {
+    font-size: 22px;
+  }
+
+  .orange-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  /* HEADER išdėstymas */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-center {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-center a,
+  .nav-center .dropdown,
+  .search-container {
+    width: 100%;
+    text-align: left;
+  }
+
+  .search-container input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+    height: 40px;
+  }
+
+  .login-btn {
+    position: static;
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+/* Itin maži ekranai – 480px ir mažiau */
+@media (max-width: 480px) {
+  .recipe-info-box {
+    padding: 15px;
+  }
+
+  .recipe-block {
+    padding: 15px;
+  }
+
+  .recipe-meta {
+    font-size: 14px;
+  }
+
+  .recipe-block h4 {
+    font-size: 16px;
+  }
+
+  .recipe-detail {
+    padding: 20px 10px;
+  } 
+}
+  .instruction-text {
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 1rem;
+    word-wrap: break-word;
+    word-break: break-word;
+    background-color: #f9f9f900;
+  }
+/* Komentarų blokas */
+.comments-section {
+  margin-top: 20px;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 95%;               
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+
+/* Vienas komentaras */
+.comments-section div {
+  margin-bottom: 15px;
+}
+
+/* Komentarų skirtukas */
+.comments-section hr {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
+}
+
+/* Komentarų įvedimo laukelis */
+.comments-section textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+
+/* Mygtukas „Siųsti komentarą“ */
+#submit-comment {
+  margin-top: 10px;
+  background-color: #FFA654;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#submit-comment:hover {
+  background-color: #ff9333;
+}
+.delete-comment {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+}

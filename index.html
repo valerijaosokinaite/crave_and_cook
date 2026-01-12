@@ -1,0 +1,699 @@
+<!DOCTYPE html> 
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Crave and Cook - Dalinkis receptais ir atrask skonius!">
+  <title>Crave and Cook</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <!-- Mėgstamiausi (rodyti tik prisijungus) -->
+  <a href="#" class="top-heart d-none" data-target="megstamiausi">
+    <img src="images/heart.png" alt="Mėgstamiausi" style="width: 24px;">
+  </a>
+
+  <!-- Prisijungimo mygtukas -->
+  <button class="login-btn">Prisijungti</button>
+
+  <!-- Profilio nuoroda (rodyti tik prisijungus) -->
+  <a href="#" class="top-profile d-none" data-target="profilis">Profilis</a>
+</div>
+
+  <!-- Header -->
+  <header>
+    <img src="images/logo.png" alt="Crave & Cook logo" class="logo" data-target="home" style="cursor:pointer;">
+
+    <nav class="nav-center">
+        <a href="#" data-target="visi-receptai">Receptai</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Kategorijos ⌄</button>
+        <div class="dropdown-content">
+          <a href="#" data-target="valgymo-metas">Valgymo metas</a>
+          <a href="#">Patiekalo tipas</a>
+          <a href="#">Mitybos tipai</a>
+          <a href="#">Virtuvės</a>
+        </div>
+      </div>
+
+      <a href="#" data-target="ikelti-recepta">Įkelti receptą</a>
+      <a href="#" data-target="apie-mus">Apie mus</a>
+
+
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Ieškoti receptų..." class="search-input" />
+        <img src="images/search-icon.png" alt="Ieškoti" />
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+<!-- Receptų kortelės -->
+<section id="home" class="cards-section">
+    <h2>Populiariausi receptai, kurių negali neišbandyti</h2>
+    <div class="card-grid">
+      <div class="recipe-card">
+        <img src="images/kepsnys.jpg" alt="Sultingas kepsnys">
+        <p><strong>Sultingas kepsnys</strong><br><small>Jautienos kepsnys su žolelėmis bei garnyru.</small></p>
+        <button class="view-recipe-btn" data-title="Sultingas kepsnys">Peržiūrėti receptą</button>
+      </div>
+      <div class="recipe-card">
+        <img src="images/avokadas.jpg" alt="Avokado skrebutis">
+        <p><strong>Avokado skrebutis</strong><br><small>Avokadų skrebutis su įvairiais pagardais – paprasta ir skanu.</small></p>
+        <button class="view-recipe-btn" data-title="Avokado skrebutis">Peržiūrėti receptą</button>
+      </div>
+      <div class="recipe-card">
+        <img src="images/makaronai.jpg" alt="Makaronai su vištiena">
+        <p><strong>Makaronai su vištiena</strong><br><small>Greiti ir sotūs pietūs su saulėje džiovintais pomidorais.</small></p>
+        <button class="view-recipe-btn" data-title="Makaronai su vištiena">Peržiūrėti receptą</button>
+      </div>
+      <div class="recipe-card">
+        <img src="images/sriubaa.jpg" alt="Moliūgų sriuba">
+        <p><strong>Moliūgų sriuba</strong><br><small>Kreminė trinta moliūgų sriuba su kokosų pienu.</small></p>
+        <button class="view-recipe-btn" data-title="Moliūgų sriuba">Peržiūrėti receptą</button>
+      </div>
+    </div>
+  </section>
+  
+<!-- Kategorijų kortelės -->
+<section id="home-kategorijos" class="cards-section">
+  <h2>Populiariausios kategorijos</h2>
+  <div class="card-grid">
+    <div class="category-card">
+      <img src="images/pietus.jpg" alt="Greiti pietūs">
+      <button class="category-btn" data-target="valgymo-metas" data-meal="Pietūs">Greiti pietūs ➔</button>
+    </div>
+    <div class="category-card">
+      <img src="images/sveikas maistas.jpeg" alt="Sveikas maistas">
+      <button class="category-btn" data-target="valgymo-metas" data-meal="Sveika mityba">Sveikas maistas ➔</button>
+    </div>
+    <div class="category-card">
+      <img src="images/bandeless.jpg" alt="Desertai">
+      <button class="category-btn" data-target="valgymo-metas" data-meal="Desertai">Desertai ➔</button>
+    </div>
+    <div class="category-card">
+      <img src="images/kosee.jpg" alt="Gardūs pusryčiai">
+      <button class="category-btn" data-target="valgymo-metas" data-meal="Pusryčiai">Gardūs pusryčiai ➔</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Receptų puslapis: Visi receptai -->
+<section id="visi-receptai" class="cards-section" style="display: none;">
+    <h2>Visi receptai</h2>
+    <p>Atraskite naujus skonius, kurių geidžiate!</p>
+    <div class="recipes-layout">
+      <!-- Filtrai -->
+      <aside class="filters">
+        <h4>Valgymo metas:</h4>
+        <label><input type="checkbox" class="filter" data-type="meal" value="Pusryčiai"> Pusryčiai</label>
+        <label><input type="checkbox" class="filter" data-type="meal" value="Pietūs"> Pietūs</label>
+        <label><input type="checkbox" class="filter" data-type="meal" value="Vakarienė"> Vakarienė</label>
+        <label><input type="checkbox" class="filter" data-type="meal" value="Desertai"> Desertai</label>
+        <label><input type="checkbox" class="filter" data-type="meal" value="Užkandžiai"> Užkandžiai</label>
+  
+        <h4>Patiekalo tipas:</h4>
+        <label><input type="checkbox" class="filter" data-type="type" value="Sriubos"> Sriubos</label>
+        <label><input type="checkbox" class="filter" data-type="type" value="Salotos"> Salotos</label>
+        <label><input type="checkbox" class="filter" data-type="type" value="Pagrindiniai patiekalai"> Pagrindiniai patiekalai</label>
+        <label><input type="checkbox" class="filter" data-type="type" value="Gėrimai"> Gėrimai</label>
+  
+        <h4>Mitybos tipai:</h4>
+        <label><input type="checkbox" class="filter" data-type="diet" value="Sveika mityba"> Sveika mityba</label>
+        <label><input type="checkbox" class="filter" data-type="diet" value="Vegetariški patiekalai"> Vegetariški patiekalai</label>
+        <label><input type="checkbox" class="filter" data-type="diet" value="Veganiški patiekalai"> Veganiški patiekalai</label>
+        <label><input type="checkbox" class="filter" data-type="diet" value="Be glitimo"> Be glitimo</label>
+        <label><input type="checkbox" class="filter" data-type="diet" value="Vaikams"> Vaikams</label>
+  
+        <h4>Virtuvės:</h4>
+        <label><input type="checkbox" class="filter" data-type="cuisine" value="Lietuvių"> Lietuvių</label>
+        <label><input type="checkbox" class="filter" data-type="cuisine" value="Italų"> Italų</label>
+        <label><input type="checkbox" class="filter" data-type="cuisine" value="Japonų"> Japonų</label>
+        <label><input type="checkbox" class="filter" data-type="cuisine" value="Meksikiečių"> Meksikiečių</label>
+        <label><input type="checkbox" class="filter" data-type="cuisine" value="Kiniečių"> Kiniečių</label>
+
+        <button class="clear-filters" id="clear-filters">Išvalyti filtrus</button>
+      </aside>
+  
+      <!-- Receptų kortelės -->
+      <div class="all-recipes">
+        <div class="card-grid" id="recipe-list">
+          <!-- Receptai bus įkeliami dinaminiu būdu -->
+        </div>
+        <p id="no-results-msg" style="display:none; font-style: italic; margin-top:10px;">🔍 Nerasta receptų pagal paiešką.</p>
+        <button class="load-more-btn" id="load-more">Įkelti daugiau receptų</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="valgymo-metas" class="cards-section" style="display: none;">
+    <h2>Receptai pagal valgymo metą</h2>
+    <p>Pasirinkite receptą pagal tai, kuriam dienos laikui ruošiatės gaminti.</p>
+  
+    <!-- Pusryčiai -->
+    <div class="meal-category">
+      <h3>Pusryčiai</h3>
+      <div id="meal-pusryčiai" class="card-grid">
+        <div class="recipe-card">
+          <img src="images/avokadas.jpg" alt="Avokado skrebutis">
+          <p><strong>Avokado skrebutis</strong><br><small>Avokadų skrebutis su įvairiais pagardais – paprasta ir skanu.</small></p>
+          <button class="view-recipe-btn" data-title="Avokado skrebutis">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/kosee.jpg" alt="Avižinė košė">
+          <p><strong>Avižinė košė</strong><br><small>Sveiki pusryčiai su uogomis.</small></p>
+          <button class="view-recipe-btn" data-title="Avižinė košė">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/smoothie.jpg" alt="Braškių glotnutis">
+          <p><strong>Braškių ir bananų glotnutis</strong><br><small>Švelnus vaisių kokteilis su chia sėklomis pusryčiams.</small></p>
+          <button class="view-recipe-btn" data-title="Braškių glotnutis">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/vegetariski_pusryciai.jpg" alt="Vegetariški pusryčiai">
+          <p><strong>Vegetariškas pusryčių dubenėlis</strong><br><small>Subalansuoti pusryčiai su kiaušiniu ir daržovėmis.</small></p>
+          <button class="view-recipe-btn" data-title="Vegetariški pusryčiai">Peržiūrėti receptą</button>
+        </div>
+      </div>
+      <button class="load-more-btn" data-meal="Pusryčiai">Žiūrėti daugiau</button>
+    </div>
+  
+    <!-- Pietūs -->
+    <div class="meal-category">
+      <h3>Pietūs</h3>
+      <div id="meal-pietūs" class="card-grid">
+        <div class="recipe-card">
+          <img src="images/makaronai.jpg" alt="Makaronai su vištiena">
+          <p><strong>Makaronai su vištiena</strong><br><small>Greiti ir sotūs pietūs su saulėje džiovintais pomidorais.</small></p>
+          <button class="view-recipe-btn" data-title="Makaronai su vištiena">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/sriubaa.jpg" alt="Moliūgų sriuba">
+          <p><strong>Moliūgų sriuba</strong><br><small>Kreminė trinta moliūgų sriuba su kokosų pienu.</small></p>
+          <button class="view-recipe-btn" data-title="Moliūgų sriuba">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/pietus.jpg" alt="Bulvių apkepas">
+          <p><strong>Bulvių apkepas</strong><br><small>Kreminis apkepas su česnaku ir sūrio plutele.</small></p>
+          <button class="view-recipe-btn" data-title="Bulvių apkepas">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/cesario_salotos.jpg" alt="Cezario salotos">
+          <p><strong>Cezario salotos</strong><br><small>Klasikinės salotos su parmezanu ir traškiais skrebučiais.</small></p>
+          <button class="view-recipe-btn" data-title="Cezario salotos">Peržiūrėti receptą</button>
+        </div>
+      </div>
+      <button class="load-more-btn" data-meal="Pietūs">Žiūrėti daugiau</button>
+    </div>
+  
+    <!-- Vakarienė -->
+    <div class="meal-category">
+      <h3>Vakarienė</h3>
+      <div id="meal-vakarienė" class="card-grid">
+        <div class="recipe-card">
+          <img src="images/kepsnys.jpg" alt="Sultingas kepsnys">
+          <p><strong>Sultingas kepsnys</strong><br><small>Jautienos kepsnys su žolelėmis.</small></p>
+          <button class="view-recipe-btn" data-title="Sultingas kepsnys">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/makaronai_kinietiskai.jpg" alt="Makaronai kinietiškai">
+          <p><strong>Makaronai kinietiškai</strong><br><small>Apkepti makaronai su daržovėmis ir sojos padažu.</small></p>
+          <button class="view-recipe-btn" data-title="Makaronai kinietiškai">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/lazanija.jpg" alt="Lazanija">
+          <p><strong>Klasikinė lazanija</strong><br><small>Greitas ir sotus patiekalas su bolonese padažu.</small></p>
+          <button class="view-recipe-btn" data-title="Lazanija">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/takos.jpg" alt="Takos su jautiena">
+          <p><strong>Takos su jautiena</strong><br><small>Takos su malta jautiena, sūriu ir daržovėmis.</small></p>
+          <button class="view-recipe-btn" data-title="Takos su jautiena">Peržiūrėti receptą</button>
+        </div>
+      </div>
+      <button class="load-more-btn" data-meal="Vakarienė">Žiūrėti daugiau</button>
+    </div>
+  
+    <!-- Užkandžiai -->
+    <div class="meal-category">
+      <h3>Užkandžiai</h3>
+      <div id="meal-užkandžiai" class="card-grid">
+        <div class="recipe-card">
+          <img src="images/kepta duona.jpg" alt="Kepta duona">
+          <p><strong>Kepta duona su sūrio padažu</strong><br><small>Traški duona su česnakiniu padažu.</small></p>
+          <button class="view-recipe-btn" data-title="Kepta duona">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/limonadas.jpg" alt="Limonadas">
+          <p><strong>Gaivus limonadas</strong><br><small>Citrinų gėrimas su mėtomis karštai dienai.</small></p>
+          <button class="view-recipe-btn" data-title="Limonadas">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/mini_burgeriai.jpg" alt="Mini burgeriai">
+          <p><strong>Mini burgeriai</strong><br><small>Mini mėsainiai vakarėliams ar užkandžiams.</small></p>
+          <button class="view-recipe-btn" data-title="Mini burgeriai">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/uzkandis.jpg" alt="Užkandukai su lašiša">
+          <p><strong>Užkandukai su lašiša</strong><br><small>Traškūs užkandžiai su sūriu ir lašiša.</small></p>
+          <button class="view-recipe-btn" data-title="Užkandukai su lašiša">Peržiūrėti receptą</button>
+        </div>
+      </div>
+      <button class="load-more-btn" data-meal="Užkandžiai">Žiūrėti daugiau</button>
+    </div>
+  
+    <!-- Desertai -->
+    <div class="meal-category">
+      <h3>Desertai</h3>
+      <div id="meal-desertai" class="card-grid">
+        <div class="recipe-card">
+          <img src="images/bandeless.jpg" alt="Cinamoninės bandelės">
+          <p><strong>Cinamoninės bandelės</strong><br><small>Skanus desertas prie kavos.</small></p>
+          <button class="view-recipe-btn" data-title="Cinamoninės bandelės">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/kisielius.jpg" alt="Kisielius">
+          <p><strong>Spanguolių kisielius</strong><br><small>Tradicinis šventinis saldus gėrimas.</small></p>
+          <button class="view-recipe-btn" data-title="Kisielius">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/tiramisu.webp" alt="Tiramisu">
+          <p><strong>Tiramisu</strong><br><small>Itališkas desertas su kava ir maskarponės kremu.</small></p>
+          <button class="view-recipe-btn" data-title="Tiramisu">Peržiūrėti receptą</button>
+        </div>
+        <div class="recipe-card">
+          <img src="images/naminiai-varskes-sureliai-receptas.jpg" alt="Varškės sūreliai">
+          <p><strong>Naminiai varškės sūreliai</strong><br><small>Sveikesni varškės sūreliai aplieti šokoladu.</small></p>
+          <button class="view-recipe-btn" data-title="Varškės sūreliai">Peržiūrėti receptą</button>
+        </div>
+      </div>
+      <button class="load-more-btn" data-meal="Desertai">Žiūrėti daugiau</button>
+    </div>
+  </section>  
+  
+<!-- Puslapis "Ikelti recepta" -->
+<section id="ikelti-recepta" class="cards-section" style="display:none;">
+  <h2 class="center">Įkelti receptą</h2>
+  <p class="center">Pasidalinkite savo gardžiomis idėjomis!</p>
+  <div class="form-container">
+    <form id="recipe-form">
+      <div class="form-content">
+
+        <div class="form-section">
+          <label for="title">Recepto pavadinimas</label>
+          <input type="text" id="title" name="title" required>
+
+          <label>Trumpas recepto aprašymas</label>
+          <textarea name="description" required></textarea>
+
+          <label>Ingredientai</label>
+          <div id="ingredients-list">
+            <!-- ingredientų eilutės bus generuojamos su JS -->
+          </div>
+          <button type="button" class="add-ingredient">➕ Pridėti naują ingredientą</button>
+
+          <label>Gaminimo instrukcijos</label>
+          <textarea name="instructions" required></textarea>
+
+          <div class="half-fields">
+            <div class="form-group">
+              <label for="portions">Porcijų skaičius</label>
+              <input type="number" name="portions" id="portions" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Paruošimo laikas</label>
+              <input type="text" name="time" id="time" required>
+            </div>
+          </div>
+          
+          <label>Patarimai (nebūtina)</label>
+          <textarea name="tips" placeholder="Pvz., galima naudoti kitus ingredientus..."></textarea>
+          
+          <div class="dropdown-group">
+            <div class="dropdown-pair">
+              <label for="meal-select">Valgymo metas</label>
+              <select name="meal" id="meal-select">
+                <option value="">-- Pasirinkite --</option>
+                <option value="Pusryčiai">Pusryčiai</option>
+                <option value="Pietūs">Pietūs</option>
+                <option value="Vakarienė">Vakarienė</option>
+                <option value="Užkandžiai">Užkandžiai</option>
+                <option value="Desertai">Desertai</option>
+              </select>
+              <input type="text" name="meal_custom" placeholder="...arba įveskite savo">
+            </div>
+          
+            <div class="dropdown-pair">
+              <label for="type-select">Patiekalo tipas</label>
+              <select name="type" id="type-select">
+                <option value="">-- Pasirinkite --</option>
+                <option value="Sriubos">Sriubos</option>
+                <option value="Salotos">Salotos</option>
+                <option value="Pagrindiniai patiekalai">Pagrindiniai patiekalai</option>
+                <option value="Gėrimai">Gėrimai</option>
+              </select>
+              <input type="text" name="type_custom" placeholder="...arba įveskite savo">
+            </div>
+          
+            <div class="dropdown-pair">
+              <label for="diet-select">Mitybos tipas</label>
+              <select name="diet" id="diet-select">
+                <option value="">-- Pasirinkite --</option>
+                <option value="Sveika mityba">Sveika mityba</option>
+                <option value="Vegetariški patiekalai">Vegetariški patiekalai</option>
+                <option value="Veganiški patiekalai">Veganiški patiekalai</option>
+                <option value="Be glitimo">Be glitimo</option>
+                <option value="Vaikams">Vaikams</option>
+              </select>
+              <input type="text" name="diet_custom" placeholder="...arba įveskite savo">
+            </div>
+          
+            <div class="dropdown-pair">
+              <label for="cuisine-select">Virtuvės stilius</label>
+              <select name="cuisine" id="cuisine-select">
+                <option value="">-- Pasirinkite --</option>
+                <option value="Lietuvių">Lietuvių</option>
+                <option value="Italų">Italų</option>
+                <option value="Japonų">Japonų</option>
+                <option value="Meksikiečių">Meksikiečių</option>
+                <option value="Kiniečių">Kiniečių</option>
+              </select>
+              <input type="text" name="cuisine_custom" placeholder="...arba įveskite savo">
+            </div>
+          </div>
+                    
+          <label>Įkelti recepto nuotraukas</label>
+          <div class="upload-box" id="upload-box">
+            <input type="file" id="image-upload" name="image-upload[]" accept="image/*" multiple style="display:none;" required>
+            <label for="image-upload" class="upload-label">
+              <img src="images/camera.png" alt="camera" />
+              <p>➕ Įkelti recepto nuotraukas</p>
+            </label>
+            <div id="photo-preview"></div>
+          </div>
+
+          <button type="submit" class="submit-btn">Įkelti receptą</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</section>
+
+ <!-- psl apie mus -->
+<section id="apie-mus" class="cards-section" style="display: none;">
+  <h2 class="center">Apie mus</h2>
+  <p class="subtitle center">Apie "Crave and Cook"</p>
+  <div class="about-container">
+
+    <div class="about-box">
+      <h3>Svetainės vizija:</h3>
+      <p><em>"Crave and Cook – tai vieta, kur kiekvienas gali atrasti ir pasidalinti skaniausiais receptais! Mūsų misija – padėti tiek pradedantiesiems, tiek patyrusiems kulinarams rasti įkvėpimą virtuvėje ir lengvai pasigaminti skanius bei sveikus patiekalus.
+      <h3>Mūsų misija:</h3>
+      <p>Mes tikime, kad maisto gaminimas turėtų būti lengvas, įkvepiantis ir prieinamas visiems. Mūsų tikslas – suteikti vartotojams patogią platformą, kurioje jie gali rasti įvairių skonių receptus, išmokti naujų gaminimo būdų ir dalintis savo kulinarinėmis idėjomis su bendruomene.</p>
+
+      <h3>Mūsų vertybės:</h3>
+      <ul>
+        <li>🌍 <strong>Bendruomenė:</strong> Skatiname dalintis ir atrasti naujus skonius.</li>
+        <li>🍏 <strong>Sveikas maistas:</strong> Palaikome subalansuotą mitybą ir kokybiškus ingredientus.</li>
+        <li>👩‍🍳<strong>Kūrybiškumas:</strong> Eksperimentuojame ir skatiname naujas receptų idėjas.</li>
+        <li>📖 <strong>Mokymasis:</strong> Dalijamės naudingais patarimais ir maisto gaminimo technikomis.</li>
+      </ul>
+
+      <h3>Kaip prisidėti?</h3>
+      <ul>
+        <li>📸 <strong>Dalinkis savo receptais.</strong></li>
+        <li>💬 <strong>Komentuok ir įvertink kitų receptus.</strong></li>
+        <li>📢 <strong>Sek mus socialiniuose tinkluose ir dalinkis įkvėpimu.</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- psl naujienlaiskis -->
+<section id="naujienlaiskis" class="cards-section" style="display: none;">
+  <h2>Naujienlaiškio prenumerata</h2>
+  <p>Gauk geriausius receptus ir idėjas, kurios pažadins tavo skonio potyrius!</p>
+  <div class="newsletter-container">
+      <div class="newsletter-image-wrapper">
+          <div class="newsletter-overlay"></div>
+          <form id="newsletter-form" class="newsletter-form-overlay">
+              <input type="email" id="newsletter-email" placeholder="Jūsų El. pašto adresas" required />
+              <button type="submit">Prenumeruoti</button>
+          </form>
+      </div>
+  </div>
+  <!-- Pranešimas, kuris pasirodys po sėkmingos registracijos -->
+  <div id="success-message" style="display: none; color: green; margin-top: 10px;">
+      Ačiū už užsiregistravimą! Jūsų el. paštas buvo įtrauktas.
+  </div>
+</section>
+
+ <!-- psl privatumo politika -->
+<section id="privatumo-politika" style="display: none;">
+  <div class="privacy-header">
+    <h2>Privatumo politika</h2>
+    <p>Sužinokite, kaip mes saugome jūsų asmens duomenis ir kokios yra jūsų teisės naudojantis mūsų svetaine.</p>
+  </div>
+
+  <div class="privacy-content">
+    <h3>1. Asmens duomenų rinkimas</h3>
+    <p>Mes renkame tik minimalią informaciją – dažniausiai el. pašto adresus, kai prenumeruojate naujienlaiškį. Taip pat naudojame „Google Analytics“ duomenims apie puslapio naudojimą rinkti.</p>
+
+    <h3>2. Duomenų naudojimas</h3>
+    <ul>
+      <li>Receptų ir naujienų siuntimui naujienlaiškiu;</li>
+      <li>Turinio ir funkcijų tobulinimui pagal naudotojų elgseną;</li>
+      <li>Statistiniams analizei apie mūsų lankytojų poreikius.</li>
+    </ul>
+
+    <h3>3. Slapukai</h3>
+    <p>Naudojame slapukus (cookies), kad svetainė veiktų sklandžiai. Galite jų atsisakyti per naršyklės nustatymus.</p>
+
+    <h3>4. Jūsų teisės</h3>
+    <ul>
+      <li>Gauti informaciją apie saugomus duomenis;</li>
+      <li>Pataisyti ar ištrinti netikslius duomenis;</li>
+      <li>Bet kada atsisakyti naujienlaiškio prenumeratos.</li>
+    </ul>
+
+    <h3>5. Privatumo politikos keitimas</h3>
+    <p>Politika gali būti keičiama. Pakeitimai įsigalioja nuo jų paskelbimo šiame puslapyje.</p>
+  </div>
+</section>
+
+ <!-- Puslapis kontaktai -->
+ <section id="kontaktai" style="display: none;">
+  <div class="contact-header">
+    <h2>Kontaktai</h2>
+    <p>Bendraukime! Mes čia, kad atsakytume į jūsų klausimus.</p>
+  </div>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <div class="contact-block">
+        <img src="images/mail.png" alt="El. paštas">
+        <span><em>info@cravecook.lt</em></span>
+      </div>
+      <div class="contact-block">
+        <img src="images/call.png" alt="Telefonas">
+        <span><em>+370 600 00000</em></span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Susisiekite</h3> <!-- Pridėta antraštė virš formos -->
+      <form id="contact-form">
+        <label for="name">Vardas</label>
+        <input type="text" id="name" placeholder="Įrašykite vardą" required>
+    
+        <label for="contact-email">El. paštas</label>
+        <input type="email" id="contact-email" placeholder="Įrašykite el. paštą" required>
+    
+        <label for="subject">Tema</label>
+        <input type="text" id="subject" placeholder="Įrašykite temą" required>
+    
+        <label for="message">Žinutė</label>
+        <textarea id="message" placeholder="Įrašykite žinutę" required></textarea>
+    
+        <button type="submit">Siųsti</button>
+        <div id="contact-success" class="success-message" style="display:none;">Žinutė išsiųsta!</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="prisijungti" style="display: none;">
+  <div class="auth-wrapper">
+    <div class="auth-form-container">
+
+      <!-- Prisijungimo forma -->
+      <form id="login-form" class="auth-form active" method="POST" action="login.php">
+        <h2>Prisijungimas</h2>
+        <input type="email" id="login-email" name="email" placeholder="Įveskite el. paštą" required />
+      
+        <div class="password-field">
+          <input type="password" id="login-password" name="password" placeholder="Įveskite slaptažodį" required />
+          <span class="toggle-password" data-target="login-password" style="cursor: pointer;" role="button" tabindex="0">👁</span>
+        </div>
+      
+        <div class="auth-options">
+          <label><input type="checkbox" /> Prisiminti mane</label>
+          <a href="#">Pamiršai slaptažodį?</a>
+        </div>
+      
+        <button type="submit">Prisijungti</button>
+        <p>Neturi paskyros? <a href="#" id="switch-to-register">Registruotis</a></p>
+      </form>
+      
+      <!-- Registracijos forma -->
+      <form id="register-form" class="auth-form" method="POST" action="register.php">
+        <h2>Registracija</h2>
+        <input type="text" id="register-name" name="username" placeholder="Įveskite vardą" required />
+        <input type="email" id="register-email" name="email" placeholder="Įveskite el. paštą" required />
+        
+        <div class="password-field">
+          <input type="password" id="register-password" name="password" placeholder="Sugalvokite slaptažodį" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+          title="Slaptažodyje turi būti bent 8 simboliai, bent viena didžioji, viena mažoji raidė ir vienas skaičius." required />
+          <span class="toggle-password" data-target="register-password">👁</span>
+        </div>
+
+        <div class="password-field">
+          <input type="password" id="register-confirm" name="confirm_password" placeholder="Patvirtinkite slaptažodį" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+          title="Slaptažodyje turi būti bent 8 simboliai, bent viena didžioji, viena mažoji raidė ir vienas skaičius." required />
+          <span class="toggle-password" data-target="register-confirm">👁</span>
+        </div>
+
+        <div class="auth-options full-width">
+          <label><input type="checkbox" required /> Sutinku su sąlygomis</label>
+        </div>
+
+        <button type="submit">Registruotis</button>
+        <p>Jau turi paskyrą? <a href="#" id="switch-to-login">Prisijungti</a></p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<section id="profilis" style="display: none;">
+  <h2>Jūsų profilis</h2>
+
+  <div class="profile-container">
+    <p><strong>Vardas:</strong> <span id="profile-name">...</span></p>
+    <p><strong>El. paštas:</strong> <span id="profile-email">...</span></p>
+    <p><strong>Mėgstamiausi:</strong> <span id="profile-favorites">0</span></p>
+    <p><strong>Įkelti receptai:</strong> <span id="profile-uploads">0</span></p>
+
+    <h3 class="profile-recipes-title">Jūsų įkelti receptai</h3>
+    <div class="profile-card-grid" id="profile-recipes">
+      <!-- Dinamiškai sukurtos kortelės -->
+    </div>
+
+    <div style="text-align: center;">
+      <button id="logout">Atsijungti</button>
+    </div>
+  </div>
+</section>
+
+
+<section id="megstamiausi" class="cards-section" style="display: none;">
+  <h2>Jūsų mėgstamiausi receptai</h2>
+  <div class="card-grid" id="favorites-list">
+    <!-- Jei nėra, parodomas pranešimas -->
+  </div>
+  <p id="no-favorites-msg" style="display:none; font-style: italic; margin-top:20px;">Kol kas neturite išsaugotų receptų.</p>
+</section>
+
+<section id="receptas" class="recipe-detail" style="display: none;">
+  <h2 id="receptas-pavadinimas" class="center">...</h2>
+  <div class="recipe-stats center">
+    <span>❤️ <span id="receptas-likes">23</span></span> |
+    <span>💬 <span id="receptas-comments">5</span></span>
+  </div>
+
+  <div class="recipe-info-box">
+    <div class="recipe-carousel">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel-track">
+        <!-- Nuotraukos bus dinamiškai įkeliamos -->
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+    
+
+    <div class="recipe-shortdesc">
+      <p id="receptas-aprasymas"></p>
+    </div>
+
+    <div class="recipe-meta">
+      <div><strong>Porcijos:</strong> <span id="receptas-porcijos">-</span></div>
+      <div><strong>Paruošimo laikas:</strong> <span id="receptas-laikas">-</span></div>
+    </div>
+
+    <div class="recipe-block">
+      <h4>Ingredientai</h4>
+      <ul id="receptas-ingredientai"></ul>
+    </div>
+
+    <div class="recipe-block">
+      <h4>Gaminimas</h4>
+      <div id="receptas-instrukcijos" class="instruction-text"></div>
+    </div>
+
+    <div class="recipe-block">
+      <h4>Patarimai</h4>
+      <p id="receptas-patarimai"></p>
+    </div>
+
+    <div class="recipe-block">
+      <small id="receptas-author">Publikavo: Greta</small><br>
+      <small id="receptas-date">Data: 2025-04-11</small>
+    </div>
+
+<!-- Mygtukai recepto puslapyje -->
+<div class="comments-section">
+  <h3>Komentarai</h3>
+  <div id="comments-list"></div>
+
+  <div id="comment-form-wrapper" style="margin-top:20px;">
+    <textarea id="comment-content" placeholder="Parašykite savo komentarą..." rows="3" style="width:100%;"></textarea>
+    <button id="submit-comment" class="orange-btn" style="margin-top:5px;">Palikti komentarą 💬</button>
+    <p id="comment-message" style="color: green; display: none; margin-top: 5px;"></p>
+  </div>
+</div>
+
+<div class="recipe-actions">
+  <button class="orange-btn" id="share-recipe-btn">
+    Dalintis receptu 📢
+  </button>
+  <button class="orange-btn" id="save-recipe-btn">
+    Įtraukti receptą ❤️
+  </button>
+</div>
+</section>
+
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#" data-target="kontaktai">Kontaktai</a>
+      <a class="nav-link" data-target="privatumo-politika" href="#">Privatumo politika</a>
+      <a href="#" data-target="naujienlaiskis">Naujienlaiškis</a>
+    </div>
+    <div class="social" id="social-links">
+      <span>Bendraukime:</span>
+    </div>       
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
